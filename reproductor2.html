@@ -26,6 +26,30 @@
     height: 100%;
     border: none;
   }
+
+  .logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-icon {
+    width: 36px; height: 36px;
+    background: var(--neon-green);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 14px rgba(0,255,65,0.55);
+  }
+  .logo-icon::after { content: '▶'; color: var(--dark-bg); font-size: 14px; margin-left: 2px; }
+
+  .logo h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem; letter-spacing: 3px;
+    color: var(--text-primary); line-height: 1;
+    text-shadow: 0 0 16px rgba(0,255,65,0.25);
+  }
+  .logo h2 span { color: var(--neon-green); }
 </style>
 </head>
   <header class="site-header">
