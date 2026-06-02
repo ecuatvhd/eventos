@@ -59,7 +59,6 @@
 
 <!---decode-->
 <script>
-    // Función para obtener y decodificar el parámetro r
     function getDecodedChannel() {
       const params = new URLSearchParams(window.location.search);
       const r = params.get("r");
@@ -71,7 +70,7 @@
 
     const channelParam = getDecodedChannel();
     if (channelParam) {
-      // Redirigir a play.html con el parámetro decodificado
+      // Cargar play.html con el parámetro decodificado
       document.getElementById("player2").src = "/eventos/play.html?" + channelParam;
     } else {
       document.body.innerHTML = "<p>Error: no se encontró parámetro de canal.</p>";
