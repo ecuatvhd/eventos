@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reproductor TV</title>
+  <style>
+    body { margin:0; background:#000; }
+    #player { width:100%; height:100vh; border:none; }
+  </style>
+</head>
+<body>
+  <iframe id="player" allowfullscreen></iframe>
+
+  <script>
+    // Obtener el parámetro r (Base64)
+    function getDecodedChannel() {
+      const params = new URLSearchParams(window.location.search);
+      const r = params.get("r");
+      if (r) {
+        return atob(r); // ej: "channel=ecdf_ligapro"
+      }
+      return null;
+    }
+
+    const channelParam = getDecodedChannel();
+    if (channelParam) {
+      // Construir la URL final hacia tu backend
+      // Aquí usas tu base: https://tvtvhd.com/canales.php
+      const url = "https://tvtvhd.com/canales.php?" + channelParam;
+      document.getElementById("player").src = url;
+    } else {
+      document.body.innerHTML = "<p style='color:white;text-align:center;'>Error: no se encontró canal.</p>";
+    }
+  </script>
+</body>
+</html>
