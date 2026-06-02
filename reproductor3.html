@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Reproductor TV</title>
+  <title>Reproductor Stream</title>
   <style>
     body { margin:0; background:#000; }
     #player { width:100%; height:100vh; border:none; }
@@ -12,19 +12,23 @@
   <iframe id="player" allowfullscreen></iframe>
 
   <script>
-    // Función para decodificar el parámetro r
+    // Decodificar el parámetro r
     function getDecodedStream() {
       const params = new URLSearchParams(window.location.search);
       const r = params.get("r");
       if (r) {
-        return atob(r); // ej: "stream=ecdf_ligapro"
+        try {
+          return atob(r); // ej: "stream=ecdf_ligapro"
+        } catch(e) {
+          return null;
+        }
       }
       return null;
     }
 
     const streamParam = getDecodedStream();
-    if (streamParam) {
-      // Construir la URL final hacia tu backend
+    if (streamParam && streamParam.startsWith("stream=")) {
+      // Construir la URL final
       const url = "https://tvtvhd.com/canales.php?" + streamParam;
       document.getElementById("player").src = url;
     } else {
