@@ -59,23 +59,24 @@
 
 <!---decode-->
 <script>
-  function getDecodedChannel() {
-    const params = new URLSearchParams(window.location.search);
-    const r = params.get("r");
-    if (r) {
-      const decoded = atob(r); // ej: "channel=espn"
-      return decoded;
+    // Función para obtener y decodificar el parámetro r
+    function getDecodedChannel() {
+      const params = new URLSearchParams(window.location.search);
+      const r = params.get("r");
+      if (r) {
+        return atob(r); // ej: "channel=premier2uk"
+      }
+      return null;
     }
-    return null;
-  }
 
-  const channelParam = getDecodedChannel();
-  if (channelParam) {
-    // Aquí lo aplicas al reproductor 2
-    const url = "/eventos/reproductor2.html?" + channelParam;
-    document.getElementById("player2").src = url;
-  }
-</script>
+    const channelParam = getDecodedChannel();
+    if (channelParam) {
+      // Redirigir a play.html con el parámetro decodificado
+      document.getElementById("player2").src = "/eventos/play.html?" + channelParam;
+    } else {
+      document.body.innerHTML = "<p>Error: no se encontró parámetro de canal.</p>";
+    }
+  </script>
 
 
 
