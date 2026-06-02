@@ -12,24 +12,23 @@
   <iframe id="player" allowfullscreen></iframe>
 
   <script>
-    // Obtener el parámetro r (Base64)
-    function getDecodedChannel() {
+    // Función para decodificar el parámetro r
+    function getDecodedStream() {
       const params = new URLSearchParams(window.location.search);
       const r = params.get("r");
       if (r) {
-        return atob(r); // ej: "channel=ecdf_ligapro"
+        return atob(r); // ej: "stream=ecdf_ligapro"
       }
       return null;
     }
 
-    const channelParam = getDecodedChannel();
-    if (channelParam) {
+    const streamParam = getDecodedStream();
+    if (streamParam) {
       // Construir la URL final hacia tu backend
-      // Aquí usas tu base: https://tvtvhd.com/canales.php
-      const url = "https://tvtvhd.com/canales.php?" + channelParam;
+      const url = "https://tvtvhd.com/canales.php?" + streamParam;
       document.getElementById("player").src = url;
     } else {
-      document.body.innerHTML = "<p style='color:white;text-align:center;'>Error: no se encontró canal.</p>";
+      document.body.innerHTML = "<p style='color:white;text-align:center;'>Error: no se encontró stream.</p>";
     }
   </script>
 </body>
