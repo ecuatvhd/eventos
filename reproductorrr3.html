@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>ECUTVHD</title>
+  <style>
+    body { margin:0; background:#000; }
+    #player { width:100%; height:100vh; border:none; }
+  </style>
+</head>
+<body>
+  <iframe id="player" allowfullscreen></iframe>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const stream = params.get("stream");
+    const r = params.get("r");
+
+    if (stream && !r) {
+      // Codificar automáticamente el parámetro en Base64
+      const encoded = btoa("stream=" + stream);
+
+      // Redirigir a la misma página pero con ?r= en lugar de ?stream=
+      const newUrl = window.location.pathname + "?r=" + encoded;
+      window.location.replace(newUrl);
+    } else if (r) {
+      // Decodificar el parámetro r
+      const decoded = atob(r); // ej: "stream=ecdf_ligapro"
+
+      // Construir la URL final hacia tu backend
+      const url = "https://ecuatvhd.github.io/eventos/reproductorr3.html?" + decoded;
+
+      // Cargar en el iframe
+      document.getElementById("player").src = url;
+    } else {
+      document.body.innerHTML = "<p style='color:white;text-align:center;'>Error: no se encontró parámetro stream/r.</p>";
+    }
+  </script>
+</body>
+</html>
