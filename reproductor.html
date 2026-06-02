@@ -238,5 +238,25 @@
   }
 </script>
 
+
+<script>
+    function getDecodedChannel() {
+      const params = new URLSearchParams(window.location.search);
+      const r = params.get("r");
+      if (r) {
+        return atob(r); // ej: "channel=premier2uk"
+      }
+      return null;
+    }
+
+    const channelParam = getDecodedChannel();
+    if (channelParam) {
+      // Cargar play.html con el parámetro decodificado
+      document.getElementById("playerFrame").src = "/eventos/play.html?" + channelParam;
+    } else {
+      document.body.innerHTML = "<p>Error: no se encontró parámetro de canal.</p>";
+    }
+  </script>
+  
 </body>
 </html>
