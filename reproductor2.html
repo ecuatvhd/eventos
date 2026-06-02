@@ -55,6 +55,32 @@
     document.getElementById("player").src = decodedUrl;
   }
 </script>
+
+
+<!---decode-->
+<script>
+  function getDecodedChannel() {
+    const params = new URLSearchParams(window.location.search);
+    const r = params.get("r");
+    if (r) {
+      const decoded = atob(r); // ej: "channel=espn"
+      return decoded;
+    }
+    return null;
+  }
+
+  const channelParam = getDecodedChannel();
+  if (channelParam) {
+    // Aquí lo aplicas al reproductor 2
+    const url = "/eventos/reproductor2.html?" + channelParam;
+    document.getElementById("player2").src = url;
+  }
+</script>
+
+
+
+
+  
 <script id="_wau6tu">
   var _wau = _wau || []; 
   _wau.push(["hidden", "hnbx3ms3o5", "6tu"]);
