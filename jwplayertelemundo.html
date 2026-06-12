@@ -303,11 +303,16 @@
   var embed = getParam('embed') || getParam('r') || false;
   var container = document.getElementById('player-container');
 
-  if (embed) {
-    var src = atob(embed);
-    container.innerHTML = '<iframe frameborder="0" allow="autoplay; encrypted-media" allowfullscreen src="' + src + '" scrolling="no" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;border-radius:10px;"></iframe>';
+  if (src) {
+    container.innerHTML =
+      '<iframe frameborder="0" allow="autoplay; encrypted-media" allowfullscreen src="' +
+      src +
+      '" scrolling="no" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;border-radius:10px;"></iframe>';
   } else {
-    container.innerHTML = '<img src="https://pbs.twimg.com/media/DjY2G6tV4AA5-0p.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;border-radius:10px;">';
+    // Sin parámetro → imagen de placeholder
+    container.innerHTML =
+      '<img src="https://pbs.twimg.com/media/DjY2G6tV4AA5-0p.jpg" ' +
+      'style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;border-radius:10px;" alt="Sin señal">';
   }
 </script>
 
