@@ -10,8 +10,18 @@
     "logo": "logos/espn.png"
   },
   {
-    "id": "DSPORTS2",
-    "url": "https://latamplay1.click/channel/dsports2.php",
+    "id": "WINPLAY",
+    "url": "https://latamplay1.click/channel/winplay.php",
+    "logo": "logos/espn.png"
+  },
+  {
+    "id": "TUDNMX",
+    "url": "https://latamplay1.click/channel/tudnmx.php",
+    "logo": "logos/espn.png"
+  },
+  {
+    "id": "TELEMUMDO",
+    "url": "https://latamplay1.click/channel/telemundo.php",
     "logo": "logos/espn.png"
   }
 ]
