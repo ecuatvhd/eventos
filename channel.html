@@ -179,10 +179,7 @@
 </footer>
 
 <script>
-  // ─── CONFIGURACIÓN ────────────────────────────────────────────────────────
-  // Cambia esta URL por la de tu reproductor en Replit
   var PLAYER_URL = "https://ecuatvhd.github.io/eventos/php.html";
-  // ─────────────────────────────────────────────────────────────────────────
 
   function getParam(name) {
     var regex = new RegExp("[?&]" + name.replace(/[[\]]/, "\\$&") + "=([^&#]*)");
@@ -191,19 +188,6 @@
   }
 
   var container = document.getElementById("player-container");
-
-  // Prioridad de parámetros:
-  //   1. ?r=<base64>    → modo protegido: decodifica base64 → URL del iframe
-  //   2. ?embed=<base64>→ igual que ?r=
-  //   3. ?channel=espn  → construye la URL del player automáticamente
-  //      Ejemplos de uso:
-  //        tusite.github.io/?channel=espn
-  //        tusite.github.io/?channel=liga1max
-  //        tusite.github.io/?channel=foxsports
-  //
-  //   Modo protegido — oculta el canal en la URL:
-  //        Genera el link así: btoa("https://mxplayer.../?channel=espn")
-  //        y comparte: tusite.github.io/?r=<ese_base64>
 
   var rParam   = getParam("r");
   var embed    = getParam("embed");
@@ -216,27 +200,29 @@
     try { src = atob(rParam); } catch(e) { src = null; }
 
   } else if (embed) {
-    // ?embed=<base64> → igual
+    // ?embed=<base64>
     try { src = atob(embed); } catch(e) { src = null; }
 
   } else if (channel) {
-    // ?channel=espn → arma la URL del player
-    // El reproductor ya convierte el slug a base64 internamente para la API
-    src = PLAYER_URL + "?channel=" + encodeURIComponent(channel);
+    // ?channel=dsports → convierte automáticamente en base64 ?r=
+    var fullUrl = PLAYER_URL + "?channel=" + encodeURIComponent(channel);
+    var base64Url = btoa(fullUrl);
+    src = PLAYER_URL + "?r=" + base64Url;
   }
 
   if (src) {
     container.innerHTML =
-      '<iframe frameborder="0" allow="autoplay; encrypted-media" allowfullscreen src="' +
-      src +
-      '" scrolling="no" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;border-radius:10px;"></iframe>';
+      '<iframe frameborder="0" allow="autoplay; encrypted-media" allowfullscreen ' +
+      'sandbox="allow-scripts allow-same-origin allow-presentation" ' +
+      'src="' + src + '" scrolling="no" ' +
+      'style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;border-radius:10px;"></iframe>';
   } else {
-    // Sin parámetro → imagen de placeholder
     container.innerHTML =
       '<img src="https://pbs.twimg.com/media/DjY2G6tV4AA5-0p.jpg" ' +
       'style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;border-radius:10px;" alt="Sin señal">';
   }
 </script>
+
 
 
 
