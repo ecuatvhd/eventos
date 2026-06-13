@@ -16,14 +16,14 @@
   <script>
 async function loadChannel() {
   const params = new URLSearchParams(window.location.search);
-  const canal = params.get("canales");
+  const canal = params.get("channel"); // ahora lee ?channel=
   if (!canal) return;
 
   // Cargar JSON
   const res = await fetch("php.json?v=" + Date.now());
   const channels = await res.json();
 
-  // Buscar canal
+  // Buscar canal por id
   const ch = channels.find(c => c.id.toLowerCase() === canal.toLowerCase());
   if (!ch) return;
 
@@ -35,6 +35,7 @@ async function loadChannel() {
 }
 loadChannel();
 </script>
+
 
 </body>
 </html>
