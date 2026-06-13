@@ -21,7 +21,7 @@
       if (!canal) return;
 
       // Cargar JSON
-      const res = await fetch("php.json?v=" + Date.now());
+      const res = await fetch("/eventos/php.json?v=" + Date.now());
       const channels = await res.json();
 
       // Buscar canal
@@ -33,7 +33,7 @@
 
       // Asignar al iframe con ?r=...
       document.getElementById("player").src =
-        "eventos.html?r=" + base64Url;
+        "php.html?r=" + base64Url;
     }
 
     loadChannel();
