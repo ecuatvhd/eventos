@@ -204,10 +204,20 @@
     try { src = atob(embed); } catch(e) { src = null; }
 
   } else if (channel) {
-    // ?channel=dsports → convierte automáticamente en base64 ?r=
-    var fullUrl = PLAYER_URL + "?channel=" + encodeURIComponent(channel);
-    var base64Url = btoa(fullUrl);
-    src = PLAYER_URL + "?r=" + base64Url;
+    // ?channel=dsports → busca en php.json, convierte a base64 y arma ?r=
+    fetch("php.json?v=" + Date.now())
+      .then(res => res.json())
+      .then(channels => {
+        const ch = channels.find(c => c.id.toLowerCase() === channel.toLowerCase());
+        if (!ch) {
+          container.innerHTML = "<p style='color:white;text-align:center;'>Canal no encontrado</p>";
+          return;
+        }
+        // Convertir URL real a Base64
+        const base64Url = btoa(ch.url);
+        // Redirigir automáticamente a la misma página con ?r=
+        window.location.href = window.location.pathname + "?r=" + base64Url;
+      });
   }
 
   if (src) {
@@ -216,12 +226,13 @@
       'sandbox="allow-scripts allow-same-origin allow-presentation" ' +
       'src="' + src + '" scrolling="no" ' +
       'style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;border-radius:10px;"></iframe>';
-  } else {
+  } else if (!channel) {
     container.innerHTML =
       '<img src="https://pbs.twimg.com/media/DjY2G6tV4AA5-0p.jpg" ' +
       'style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;border-radius:10px;" alt="Sin señal">';
   }
 </script>
+
 
 
 
