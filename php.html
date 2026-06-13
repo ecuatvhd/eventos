@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Eventos</title>
+  <title>Reproductor</title>
   <style>
     html, body { margin:0; padding:0; height:100%; background:#000; }
     iframe { width:100%; height:100%; border:none; }
@@ -14,19 +14,32 @@
   </iframe>
 
   <script>
-    function loadStream() {
+    async function loadChannel() {
       const params = new URLSearchParams(window.location.search);
-      const r = params.get("r");
-      if (!r) return;
+      const canal = params.get("canales");
+      if (!canal) return;
 
-      // Decodificar Base64
-      const decodedUrl = atob(r);
+      // Cargar JSON
+      const res = await fetch("php.json?v=" + Date.now());
+      const channels = await res.json();
 
-      // Asignar al iframe
+      // Buscar canal
+      const ch = channels.find(c => c.id.toLowerCase() === canal.toLowerCase());
+      if (!ch) {
+        document.body.innerHTML = "<p style='color:white;text-align:center;'>Canal no encontrado</p>";
+        return;
+      }
+
+      // Convertir URL a Base64
+      const base64Url = btoa(ch.url);
+
+      // Decodificar y reproducir directamente
+      const decodedUrl = atob(base64Url);
       document.getElementById("player").src = decodedUrl;
     }
 
-    loadStream();
+    loadChannel();
   </script>
 </body>
 </html>
+
