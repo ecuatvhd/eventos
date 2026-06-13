@@ -2,41 +2,31 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Reproductor</title>
+  <title>Eventos</title>
   <style>
     html, body { margin:0; padding:0; height:100%; background:#000; }
     iframe { width:100%; height:100%; border:none; }
   </style>
 </head>
 <body>
-  <!-- iframe con sandbox para bloquear popups -->
-  <iframe id="player" allowfullscreen 
+  <iframe id="player" allowfullscreen
           sandbox="allow-scripts allow-same-origin allow-presentation">
   </iframe>
 
   <script>
-    async function loadChannel() {
+    function loadStream() {
       const params = new URLSearchParams(window.location.search);
-      const canal = params.get("canales");
-      if (!canal) return;
+      const r = params.get("r");
+      if (!r) return;
 
-      // Cargar JSON
-      const res = await fetch("https://ecuatvhd.github.io/eventos/php.json?v=" + Date.now());
-      const channels = await res.json();
+      // Decodificar Base64
+      const decodedUrl = atob(r);
 
-      // Buscar canal
-      const ch = channels.find(c => c.id === canal);
-      if (!ch) return;
-
-      // Convertir URL a Base64
-      const base64Url = btoa(ch.url);
-
-      // Asignar al iframe con ?r=...
-      document.getElementById("player").src =
-        "" + base64Url;
+      // Asignar al iframe
+      document.getElementById("player").src = decodedUrl;
     }
 
-    loadChannel();
+    loadStream();
   </script>
 </body>
 </html>
