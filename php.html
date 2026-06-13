@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reproductor</title>
+  <style>
+    html, body { margin:0; padding:0; height:100%; background:#000; }
+    iframe { width:100%; height:100%; border:none; }
+  </style>
+</head>
+<body>
+  <!-- iframe con sandbox para bloquear popups -->
+  <iframe id="player" allowfullscreen 
+          sandbox="allow-scripts allow-same-origin allow-presentation">
+  </iframe>
+
+  <script>
+    async function loadChannel() {
+      const params = new URLSearchParams(window.location.search);
+      const canal = params.get("canales");
+      if (!canal) return;
+
+      // Cargar JSON
+      const res = await fetch("php.json?v=" + Date.now());
+      const channels = await res.json();
+
+      // Buscar canal
+      const ch = channels.find(c => c.id === canal);
+      if (!ch) return;
+
+      // Convertir URL a Base64
+      const base64Url = btoa(ch.url);
+
+      // Asignar al iframe con ?r=...
+      document.getElementById("player").src =
+        "eventos.html?r=" + base64Url;
+    }
+
+    loadChannel();
+  </script>
+</body>
+</html>
