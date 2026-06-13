@@ -5,8 +5,13 @@
     "logo": "logos/tyc.png"
   },
   {
-    "id": "ESPN",
+    "id": "DSPORTS",
     "url": "https://latamplay1.click/channel/dsports.php",
+    "logo": "logos/espn.png"
+  },
+  {
+    "id": "DSPORTS2",
+    "url": "https://latamplay1.click/channel/dsports2.php",
     "logo": "logos/espn.png"
   }
 ]
