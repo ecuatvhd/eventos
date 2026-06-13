@@ -14,32 +14,28 @@
   </iframe>
 
   <script>
-    async function loadChannel() {
-      const params = new URLSearchParams(window.location.search);
-      const canal = params.get("canales");
-      if (!canal) return;
+async function loadChannel() {
+  const params = new URLSearchParams(window.location.search);
+  const canal = params.get("canales");
+  if (!canal) return;
 
-      // Cargar JSON
-      const res = await fetch("php.json?v=" + Date.now());
-      const channels = await res.json();
+  // Cargar JSON
+  const res = await fetch("php.json?v=" + Date.now());
+  const channels = await res.json();
 
-      // Buscar canal
-      const ch = channels.find(c => c.id.toLowerCase() === canal.toLowerCase());
-      if (!ch) {
-        document.body.innerHTML = "<p style='color:white;text-align:center;'>Canal no encontrado</p>";
-        return;
-      }
+  // Buscar canal
+  const ch = channels.find(c => c.id.toLowerCase() === canal.toLowerCase());
+  if (!ch) return;
 
-      // Convertir URL a Base64
-      const base64Url = btoa(ch.url);
+  // Convertir URL a Base64
+  const base64Url = btoa(ch.url);
 
-      // Decodificar y reproducir directamente
-      const decodedUrl = atob(base64Url);
-      document.getElementById("player").src = decodedUrl;
-    }
+  // Redirigir automáticamente a eventos.html?r=...
+  window.location.href = "eventos.html?r=" + base64Url;
+}
+loadChannel();
+</script>
 
-    loadChannel();
-  </script>
 </body>
 </html>
 
