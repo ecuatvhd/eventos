@@ -4,5 +4,11 @@
     "dash": "https://lilac01.pontiscloud.com/live/eds/TYCSports/live_dash_cld/TYCSports.mpd",
     "keyId": "53d0cf6c1d49c16f5180f86e1870b00f",
     "key": "7eb6743b5f44b52ba27c88229c8c7ae2"
+  },
+  "tyc": {
+    "name": "DSPORTS",
+    "dash": "https://otte.live.fly.ww.aiv-cdn.net/gru-nitro/live/clients/dash/enc/ubehitlwzo/out/v1/8e09c381a51f4366a19e979418112e8f/cenc.mpd",
+    "keyId": "a7d11d37a1f7611ee88d4db880171f32",
+    "key": "68f96d618b0b956b008c445896a25a79"
   }
 }
