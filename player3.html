@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
@@ -28,6 +27,14 @@
     }
 
     #player { width: 100%; height: 100%; }
+
+    /* Sin márgenes negros — el video rellena toda la pantalla */
+    #player video,
+    .bitmovinplayer-container video {
+      object-fit: fill !important;
+      width: 100% !important;
+      height: 100% !important;
+    }
 
     #overlay {
       position: absolute;
@@ -84,7 +91,7 @@
     // ─── CONFIGURACIÓN ──────────────────────────────────────────────────────
     // Cambiá esta URL por la URL raw de tu channels.json en GitHub:
     // https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/channels.json
-    var CHANNELS_JSON_URL = 'https://ecuatvhd.github.io/eventos/channels.json?v=';
+    var CHANNELS_JSON_URL = 'https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/channels.json';
 
     var BITMOVIN_KEY = '11d3698c-efdf-42f1-8769-54663995de2b';
     // ────────────────────────────────────────────────────────────────────────
