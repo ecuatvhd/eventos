@@ -1,0 +1,14 @@
+{
+  "tyc": {
+    "name": "TYC Sports",
+    "dash": "https://...",
+    "keyId": "53d0cf6c...",
+    "key": "7eb6743b..."
+  },
+  "espn": {
+    "name": "ESPN",
+    "dash": "https://...",
+    "keyId": "...",
+    "key": "..."
+  }
+}
