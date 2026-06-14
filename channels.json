@@ -1,14 +1,8 @@
 {
   "tyc": {
     "name": "TYC Sports",
-    "dash": "https://...",
-    "keyId": "53d0cf6c...",
-    "key": "7eb6743b..."
-  },
-  "espn": {
-    "name": "ESPN",
-    "dash": "https://...",
-    "keyId": "...",
-    "key": "..."
+    "dash": "https://lilac01.pontiscloud.com/live/eds/TYCSports/live_dash_cld/TYCSports.mpd",
+    "keyId": "53d0cf6c1d49c16f5180f86e1870b00f",
+    "key": "7eb6743b5f44b52ba27c88229c8c7ae2"
   }
 }
