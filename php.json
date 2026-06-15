@@ -1,27 +1,57 @@
 [
   {
     "id": "TyC",
-    "url": "https://latamplay1.click/channel/tyc.php",
+    "url": "https://latamplay1.click/channel/tyc.html",
     "logo": "logos/tyc.png"
   },
   {
     "id": "DSPORTS",
-    "url": "https://latamplay1.click/channel/dsports.php",
+    "url": "https://latamplay1.click/channel/dsports.html",
     "logo": "logos/espn.png"
   },
   {
     "id": "WINPLAY",
-    "url": "https://latamplay1.click/channel/winplay.php",
+    "url": "https://latamplay1.click/channel/winplay.html",
     "logo": "logos/espn.png"
   },
   {
     "id": "TUDNMX",
-    "url": "https://latamplay1.click/channel/tudnmx.php",
+    "url": "https://latamplay1.click/channel/tudnmx.html",
+    "logo": "logos/espn.png"
+  },
+  {
+    "id": "DSPORTPLUS",
+    "url": "https://latamplay1.click/channel/dsportplus.html",
+    "logo": "logos/espn.png"
+  },
+  {
+    "id": "FOX",
+    "url": "https://latamplay1.click/channel/fox.html",
+    "logo": "logos/espn.png"
+  },
+  {
+    "id": "SPORTBR",
+    "url": "https://latamplay1.click/channel/sportvbr.html",
     "logo": "logos/espn.png"
   },
   {
     "id": "TELEMUMDO",
-    "url": "https://latamplay1.click/channel/telemundo.php",
+    "url": "https://latamplay1.click/channel/telemundo.html",
+    "logo": "logos/espn.png"
+  },
+  {
+    "id": "CANAL4SV",
+    "url": "https://latamplay1.click/channel/cabal4sv.html",
+    "logo": "logos/espn.png"
+  },
+  {
+    "id": "VRT1",
+    "url": "https://latamplay1.click/channel/rt1.html",
+    "logo": "logos/espn.png"
+  },
+  {
+    "id": "TSN1",
+    "url": "https://latamplay1.click/channel/tsn1.html",
     "logo": "logos/espn.png"
   }
 ]
