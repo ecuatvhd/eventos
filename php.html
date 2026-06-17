@@ -20,7 +20,7 @@ async function loadChannel() {
   if (!canal) return;
 
   // Cargar JSON
-  const res = await fetch("php.json?v=" + Date.now());
+  const res = await fetch("/eventos/php.json?v=" + Date.now());
   const channels = await res.json();
 
   // Buscar canal por id
