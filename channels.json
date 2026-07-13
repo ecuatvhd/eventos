@@ -25,9 +25,9 @@
   },
   "espn": {
     "name": "ESPN",
-    "dash": "https://lilac22.pontiscloud.com/live/eds/ESPN/live_dash_cld/ESPN.mpd",
-    "keyId": "6d243ebd7a57bea4b4b052ae13f4c051",
-    "key": "5c1925879de873d43b7c25925902539b"
+    "dash": "https://eclocallivechannelsdash.clarovideo.com/bpk-tv/TELEAMAZONASHD/dash_fk/index.mpd",
+    "keyId": "92276502874723db2653c265004e5077",
+    "key": "97c6976f712cdbe5dba474a2588f7f73"
   },
   "telemundo2": {
     "name": "TELEMUNDO2",
