@@ -26,8 +26,8 @@
   "espn": {
     "name": "ESPN",
     "dash": "https://lilac22.pontiscloud.com/live/eds/ESPN/live_dash_cld/ESPN.mpd",
-    "keyId": "",
-    "key": ""
+    "keyId": "5c1925879de873d43b7c25925902539b",
+    "key": "6d243ebd7a57bea4b4b052ae13f4c051"
   },
   "telemundo2": {
     "name": "TELEMUNDO2",
